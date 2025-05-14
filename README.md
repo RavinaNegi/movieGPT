@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+🎬 Netflix Clone
+A fully responsive Netflix-style streaming web app built with React.js, Tailwind CSS, and Firebase Authentication. Movie data is dynamically fetched using Fetch API from The Movie Database (TMDB).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🧰 Tech Stack
+React.js – Component-based frontend library
 
-## Available Scripts
+Tailwind CSS – Utility-first CSS for rapid UI development
 
-In the project directory, you can run:
+Firebase Auth – Secure user login system
 
-### `npm start`
+Fetch API + Async/Await – For fetching movie data
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+React Router – Page routing and protected routes
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+TMDB API – Provides dynamic movie content
 
-### `npm test`
+🚀 Features
+✅ Firebase email/password login
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+✅ Protected home route for authenticated users
 
-### `npm run build`
+✅ Dynamic banners & movie rows (Fetched from TMDB)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+✅ Sections: Trending, Top Rated, Originals, etc.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+✅ Responsive and mobile-friendly layout
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+✅ Reusable UI components (Navbar, Row, Banner, etc.)
 
-### `npm run eject`
+✅ Clean project structure & code
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Live Preview:https://moviegptype.netlify.app/
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+🧾 TMDB API Setup
+Go to https://www.themoviedb.org/
 
-## Learn More
+Create an account & generate an API key
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Create a file named .env and add your API key:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+REACT_APP_TMDB_API_KEY=your_api_key_here
+Example Fetch usage in your code:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+js
+Copy
+Edit
+const fetchMovies = async () => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+  );
+  const data = await response.json();
+  setMovies(data.results);
+};
+🔐 Firebase Auth Setup
+Visit Firebase Console
 
-### Analyzing the Bundle Size
+Create a new project
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Enable Email/Password under Authentication > Sign-in method
 
-### Making a Progressive Web App
+Copy your Firebase config and use it in firebaseConfig.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+js
+Copy
+Edit
+// firebase/firebaseConfig.js
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
-### Advanced Configuration
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "your-app.firebaseapp.com",
+  projectId: "your-app-id",
+  storageBucket: "your-app.appspot.com",
+  messagingSenderId: "XXXXXX",
+  appId: "YOUR_APP_ID"
+};
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
 
-### Deployment
+⚙️ Installation
+bash
+Copy
+Edit
+git clone 
+cd netflix-clone
+npm install
+npm start
+✅ What You’ll Learn
+Using Firebase Auth with React
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Handling real API requests using fetch and useEffect
 
-### `npm run build` fails to minify
+Managing environment variables securely
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Reusable component design in React
+
+Responsive design using Tailwind CSS
