@@ -87,7 +87,7 @@ bash
 Copy
 Edit
 git clone 
-cd netflix-clone
+cd netflix-clone https://github.com/RavinaNegi/movieGPT.git
 npm install
 npm start
 ✅ What You’ll Learn
